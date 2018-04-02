@@ -7,5 +7,5 @@ module.exports = {
     host: 'localhost',
     serPort: 3000,
     pgPort: 5432,
-    dbURL: 'postgres://postgres:postgres@localhost:5432/produtos-ws-test'
+    dbURL: 'postgres://postgres:postgres@localhost:5432/produto-ws-test'
 }
