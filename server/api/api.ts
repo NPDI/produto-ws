@@ -3,6 +3,7 @@ import { Application } from 'express';
 import * as morgan from 'morgan';
 import * as bodyParser from 'body-parser';
 
+import { errorHandlerApi } from '../api/errorHandlerApi';
 import Routes from './routes/routes';
 
 class Api {
@@ -18,6 +19,7 @@ class Api {
         this.express.use(morgan('dev'));
         this.express.use(bodyParser.urlencoded({ extended: true }))
         this.express.use(bodyParser.json());
+        this.express.use(errorHandlerApi);
         this.router(this.express);
     }
 
