@@ -15,5 +15,5 @@ export function createProduct({ id, urlImagem, name, codigoDoProduto, codigoDeSo
 }
 
 export function createProducts(data: any[]): IProduct[] {
-    return data.map(createProduct)
+    return data.map(createProduct);
 }
