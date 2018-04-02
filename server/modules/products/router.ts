@@ -1,13 +1,29 @@
 import { Request, Response } from 'express';
 
-class ProductRoutes {
-    constructor(){}
+import ProductController from './controller'
 
-    findAll(req: Request, res: Response){}
-    findOne(req: Request, res: Response){}
-    create(req: Request, res: Response){}
-    update(req: Request, res: Response){}
-    destroy(req: Request, res: Response){}
+let ProductCtrl; 
+
+class ProductRoutes {
+    constructor(){
+        ProductCtrl = new ProductController();
+    }
+
+    findAll(req: Request, res: Response){
+        return ProductCtrl.getAll(req, res);
+    }
+    findOne(req: Request, res: Response){
+        return ProductCtrl.getById(req, res);
+    }
+    create(req: Request, res: Response){
+        return ProductCtrl.createProduct(req, res);
+    }
+    update(req: Request, res: Response){
+        return ProductCtrl.updateProduct(req, res);
+    }
+    destroy(req: Request, res: Response){
+        return ProductCtrl.deleteProduct(req, res);
+    }
 }
 
 export default ProductRoutes;
