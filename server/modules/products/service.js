@@ -1,10 +1,14 @@
-import { IProduct, createProduct, createProducts } from './interface';
 import * as Bluebird from 'bluebird';
 import product from '../../models/product';
 
 const model = require('../../models');
 
 class Product {
+
+    constructor() {
+        this.createProduct = ({ id, urlImagem, name, codigoDoProduto, codigoDeSoftware, urlFirmware, display }) => ( { id, urlImagem, name, codigoDoProduto, codigoDeSoftware, urlFirmware, display });
+        this.createProducts = (data) => data.map(this.createProduct);
+    }
 
     create(product) {
         return model.Product.create(product);
@@ -14,14 +18,14 @@ class Product {
         return model.Product.findAll({
             order: ['name']
         })
-            .then(createProducts)
+            .then(this.createProducts)
     }
 
     getById(id) {
         return model.Product.findOne({
             where: { id }
         })
-            .then(createProduct)
+            .then(this.createProduct)
     }
 
     update(id, user) {
@@ -36,6 +40,8 @@ class Product {
             where: { id }
         })
     }
+
+
 }
 
 export default new Product();
