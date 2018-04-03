@@ -4,6 +4,7 @@ import { onError } from '../../api/responses/errorHandler';
 import { onSuccess } from '../../api/responses/successHandler';
 import Product from './service';
 import { dbErrorandler } from '../../config/dbErrorHandler';
+import * as _ from 'lodash';
 
 class ProductController {
     constructor() { }
