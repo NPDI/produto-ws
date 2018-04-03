@@ -1,16 +1,13 @@
-import { Application, Request, Response } from 'express';
 import ProductRoutes from '../../modules/products/router';
 
 class Routes {
 
-    private router: ProductRoutes;
-
-    constructor(app: Application) {
+    constructor(app) {
         this.router = new ProductRoutes();
         this.getRoutes(app);
     }
 
-    getRoutes(app: Application): void {
+    getRoutes(app) {
         app.route('/api/produtos')
             .get(this.router.findAll);
         app.route('/api/produtos')

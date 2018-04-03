@@ -10,5 +10,5 @@ const server = http.createServer(Api);
 models.sequelize.sync().then( () => {
     server.listen(config.serverPort);
     server.on('listening', () => console.log(`Server rodando na porta ${config.serverPort}`))
-    server.on('error', (error: NodeJS.ErrnoException) => console.log(`Houve uma erro: ${error}`))
+    server.on('error', (error) => console.log(`Houve uma erro: ${error}`))
 })

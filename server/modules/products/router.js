@@ -1,5 +1,3 @@
-import { Request, Response } from 'express';
-
 import ProductController from './controller'
 
 let ProductCtrl; 
@@ -9,19 +7,19 @@ class ProductRoutes {
         ProductCtrl = new ProductController();
     }
 
-    findAll(req: Request, res: Response){
+    findAll(req, res){
         return ProductCtrl.getAll(req, res);
     }
-    findOne(req: Request, res: Response){
+    findOne(req, res){
         return ProductCtrl.getById(req, res);
     }
-    create(req: Request, res: Response){
+    create(req, res){
         return ProductCtrl.createProduct(req, res);
     }
-    update(req: Request, res: Response){
+    update(req, res){
         return ProductCtrl.updateProduct(req, res);
     }
-    destroy(req: Request, res: Response){
+    destroy(req, res){
         return ProductCtrl.deleteProduct(req, res);
     }
 }

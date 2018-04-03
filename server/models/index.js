@@ -6,7 +6,7 @@ var Sequelize = require('sequelize');
 var basename  = path.basename(__filename);
 var config    = require('../config/env/config')();
 var env       = config.env || 'development';
-var db:any        = {};
+var db        = {};
 
 if (config.dbURL) {
   var sequelize = new Sequelize(config.dbURL);
@@ -18,9 +18,6 @@ fs
   .readdirSync(__dirname)
   .filter(file => {
     let extension = '.js';
-    if (process.env.NODE_ENV === 'development') {
-      extension = '.ts';
-    }
     return (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === `${extension}`);
 
   })

@@ -1,21 +1,18 @@
-import * as express from 'express';
-import { Application } from 'express';
-import * as morgan from 'morgan';
-import * as bodyParser from 'body-parser';
+import express from 'express';
+import morgan from 'morgan';
+import bodyParser from 'body-parser';
 
 import { errorHandlerApi } from '../api/errorHandlerApi';
 import Routes from './routes/routes';
 
 class Api {
 
-    public express: Application;
-
     constructor() {
         this.express = express();
         this.middleware();
     }
 
-    middleware(): void {
+    middleware(){
         this.express.use(morgan('dev'));
         this.express.use(bodyParser.urlencoded({ extended: true }))
         this.express.use(bodyParser.json());
@@ -23,7 +20,7 @@ class Api {
         this.router(this.express);
     }
 
-    private router(app: Application): void {
+    router(app) {
         new Routes(app);
     }
     

@@ -4,43 +4,34 @@ import product from '../../models/product';
 
 const model = require('../../models');
 
-class Product implements IProduct {
-    public id: number;
-    public urlImagem: string;
-    public name: string;
-    public codigoDoProduto: string;
-    public codigoDeSoftware: string;
-    public urlFirmware: string;
-    public display: string
+class Product {
 
-    constructor() { }
-
-    create(product: any) {
+    create(product) {
         return model.Product.create(product);
     }
 
-    getAll(): Bluebird<IProduct[]> {
+    getAll() {
         return model.Product.findAll({
             order: ['name']
         })
             .then(createProducts)
     }
 
-    getById(id: number): Bluebird<IProduct> {
+    getById(id) {
         return model.Product.findOne({
             where: { id }
         })
             .then(createProduct)
     }
 
-    update(id: number, user: any) {
+    update(id, user) {
         return model.Product.update(user, {
             where: { id },
             fields: ['urlImagem', 'name', 'codigoDoProduto', 'codigoDeSoftware', 'urlFirmware', 'display']
         })
     }
 
-    delete(id: number) {
+    delete(id) {
         return model.Product.destroy({
             where: { id }
         })
